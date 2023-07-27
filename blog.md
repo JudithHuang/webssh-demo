@@ -14,6 +14,7 @@ SSH 连接：使用 ssh2.js 库连接 SSH 服务器，然后在 WebSocket 和 SS
 
 服务器端代码使用 Node.js 和 WebSocket 模块实现，主要用于连接到远程 SSH 服务器并与前端建立 WebSocket 连接。
 
+```javascript
 const SSHClient = require('ssh2').Client;
 const utf8 = require('utf8');
 
@@ -61,11 +62,13 @@ const createNewServer = (machineConfig, socket) => {
 
 // 导出函数以便在其他机件中使用
 module.exports = createNewServer;
+```
 
-# 前端代码
+## 前端代码
 
 前端代码主要包括一个包装 xterm.js 的 React 组件和一些 WebSockets 相关的代码。
 
+```javascript
 import React, { useEffect, useRef } from 'react';
 import { Terminal } from 'xterm';
 import { WebLinksAddon } from 'xterm-addon-web-links';
@@ -142,6 +145,8 @@ const WebSSH = () => {
 };
 
 export default WebSSH;
+```
+
 WebSSH 组件借助 Hooks 特性进行 WebSocket 和 xterm.js 的初始化。具体来说，这个组件使用了 useEffect Hook 在组件挂载时完成以下工作：
 
 1. 初始化 Terminal 组件。
