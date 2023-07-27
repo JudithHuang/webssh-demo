@@ -11,9 +11,9 @@ app.get('/', function (req: any, res: any, next: any) {
 
 app.ws('/', function (ws: any, req: any) {
   createNewServer({
-    host: '121.199.69.142',
+    host: '127.0.0.1',
     username: 'root',
-    password: 'Stack@80'
+    password: '123456'
   }, ws)
 });
 
