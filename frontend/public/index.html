@@ -15,6 +15,11 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb.min.js"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -39,5 +44,22 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      let events = [];
+      rrweb.record({
+          emit(event) {
+              if (events.length > 200) {
+                  // events数据大于200时，直接在控制台打印events
+                  // 实际开发这里可以直接发请求给后端存储events
+                  console.log('xxxxxx', JSON.stringify(events));
+              } else {
+                  // 将 event 存入 events 数组中
+                  events.push(event);
+              }
+          },
+          recordCanvas: true,
+          recordCrossOriginIframes: true,
+      });
+    </script>
   </body>
 </html>
